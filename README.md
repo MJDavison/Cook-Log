@@ -120,4 +120,4 @@ See also the list of [contributors](https://github.com/MJDeveloping/Cook-Log/con
 <!--- Hat tip to anyone whose code was used
 - Inspiration
 - References-->
-Not Available
+I have used @jasontaylordev "Clean Architecture Solution Template".
