@@ -34,9 +34,9 @@
 
 ## 🧐 About <a name = "about"></a>
 
-CookLog is a website used to display cooking videos. The intent behind the website is to provide a way for myself to record others cook (with permission...) and later look at it in order to learn how to cook the meals myself, rather than having to remember everything or trust in making notes on the go.
+CookLog is a website used to display cooking videos. The intent behind the website is to provide a way for me to record others cook (with permission...) and later look at it to learn how to cook the meals myself, rather than having to remember everything or trust in making notes on the go.
 
-This is a experiment. The website won't be publically avaliable- I value my privacy- but you're welcome to link the website up to your own database and do the same!
+This is an experiment. The website won't be publicly available- I value my privacy- but you're welcome to link the website up to your own database and do the same!
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -67,7 +67,7 @@ until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo.-->
-Not Avaliable
+Not Available
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
@@ -90,16 +90,16 @@ Explain what these tests test and why
 ```
 Give an example
 ```-->
-Not Avaliable
+Not Available
 ## 🎈 Usage <a name="usage"></a>
 
 <!--Add notes about how to use the system.-->
-Not Avaliable
+Not Available
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
 <!--Add additional notes about how to deploy this on a live system.-->
-Not Avaliable
+Not Available
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -119,4 +119,4 @@ See also the list of [contributors](https://github.com/MJDeveloping/Cook-Log/con
 <!--- Hat tip to anyone whose code was used
 - Inspiration
 - References-->
-Not Avaliable
+Not Available
