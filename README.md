@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Cook Log: A web application for helping myself learn to cook! 
     <br> 
 </p>
 
@@ -34,7 +34,9 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+CookLog is a website used to display cooking videos. The intent behind the website is to provide a way for myself to record others cook (with permission...) and later look at it in order to learn how to cook the meals myself, rather than having to remember everything or trust in making notes on the go.
+
+This is a experiment. The website won't be publically avaliable- I value my privacy- but you're welcome to link the website up to your own database and do the same!
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -50,7 +52,7 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+<!--A step by step series of examples that tell you how to get a development env running.
 
 Say what the step will be
 
@@ -64,11 +66,14 @@ And repeat
 until finished
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+End with an example of getting some data out of the system or using it for a little demo.-->
+Not Avaliable
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Explain how to run the automated tests for this system.
+<!--Explain how to run the automated tests for this system.
+
+
 
 ### Break down into end to end tests
 
@@ -84,31 +89,34 @@ Explain what these tests test and why
 
 ```
 Give an example
-```
-
+```-->
+Not Avaliable
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+<!--Add notes about how to use the system.-->
+Not Avaliable
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
+<!--Add additional notes about how to deploy this on a live system.-->
+Not Avaliable
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
+<!--- [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
 - [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
+- [NodeJs](https://nodejs.org/en/) - Server Environment-->
+Not Avaliable
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@MJDeveloping](https://github.com/MJDeveloping) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/MJDeveloping/Cook-Log/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
+<!--- Hat tip to anyone whose code was used
 - Inspiration
-- References
+- References-->
+Not Avaliable
