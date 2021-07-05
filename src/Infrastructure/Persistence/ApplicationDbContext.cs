@@ -33,6 +33,9 @@ namespace Cook_Log.Infrastructure.Persistence
         public DbSet<TodoList> TodoLists { get; set; }
 
         public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<MealCategory> MealCategories { get; set;}
+        public DbSet<MealItem> MealItems { get; set; }
+        public DbSet<IngredientItem> IngredientLists { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

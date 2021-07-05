@@ -11,6 +11,12 @@ namespace Cook_Log.Application.Common.Interfaces
 
         DbSet<TodoItem> TodoItems { get; set; }
 
+        DbSet<MealCategory> MealCategories {get; set;}
+
+        DbSet<MealItem> MealItems {get; set;}
+
+        DbSet<IngredientItem> IngredientLists {get; set;}
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

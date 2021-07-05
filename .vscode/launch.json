@@ -6,7 +6,7 @@
     "configurations": [
         {
             "type": "pwa-msedge",
-            "name": "http://localhost:4200/dashboard",
+            "name": "Edge Debug",
             "request": "launch",
             "url": "http://localhost:4200/dashboard"
         }

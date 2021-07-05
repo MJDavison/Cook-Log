@@ -1,18 +1,189 @@
-<div class="container">
-  <div class="row">
-    <div class="col" style="background-color: blue;">
+<h1>Todo</h1>
 
-    </div>
-    <div class="col" style="background-color: blueviolet;">
-      <p></p>
-    </div>
-  </div>
+<p>This is a complex todo list component.</p>
+
+<p *ngIf="!vm"><em>Loading...</em></p>
+
+<div *ngIf="vm">
+
   <div class="row">
-    <div class="col" style="background-color: brown;">
-      <p></p>
+    <div class="col-sm-4">
+      <div class="clearfix">
+        <h2 class="float-left">Categorys</h2>
+        <button class="btn btn-default float-right" title="Add Category..."
+          (click)="showNewCategoryModal(newCategoryModalTemplate)">
+          <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+      </div>
+      <ul class="list-group">
+        <li *ngFor="let category of vm.categories; index as i" class="list-group-item"
+          [ngClass]="{ 'active': selectedCategory == category }" (click)="selectedCategory = category">
+          <div class="clearfix">
+            <div class="float-left">
+                {{ category.title }}
+            </div>
+            <div class="float-right text-right">
+                <span class="badge badge-light">{{ remainingItems(category) }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <div class="col" style="background-color: chocolate;">
-      <p></p>
+    <div class="col-sm-8" *ngIf="selectedCategory">
+      <div class="clearfix">
+        <h2 class="float-left">{{ selectedCategory.title }}</h2>
+        <button id="listOptions" class="btn btn-default float-right" title="Category Options..."
+          (click)="showCategoryOptionsModal(listOptionsModalTemplate)">
+          <fa-icon [icon]="faEllipsisH"></fa-icon>
+        </button>
+      </div>
+      <ul id="todo-items" class="list-group mb-2">
+        <li class="list-group-item" *ngFor="let item of selectedCategory.items; index as i">
+          <div class="d-flex">
+            <!--<div class="todo-item-checkbox">
+              <input type="checkbox" [(ngModel)]="item.done" (change)="updateItem(item)" />
+            </div>-->
+            <div class="flex-fill">
+              <input id="{{ 'itemTitle' + i }}" *ngIf="item == selectedItem" type="text"
+                class="form-control item-input-control" [(ngModel)]="item.title" (keyup.enter)="updateItem(item, true)"
+                (blur)="updateItem(item)" autofocus="autofocus" />
+              <!--<div class="todo-item-title" *ngIf="item != selectedItem" [ngClass]="{ 'done-todo': item.done }"
+                (click)="editItem(item, 'itemTitle' + i)" class="form-control item-input-control">
+                <span>{{ item.title }}</span>
+              </div>-->
+            </div>
+            <div class="todo-item-commands">
+              <button *ngIf="item.id != 0" (click)="showItemDetailsModal(itemDetailsModalTemplate, item)"
+                class="btn btn-default btn-xs" role="button">
+                <fa-icon [icon]="faEllipsisH"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" (click)="addItem()">
+          <button class="btn btn-default">Add Item...</button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
+
+<div *ngIf="debug">
+  <pre>{{ vm | json }}</pre>
+</div>
+
+<ng-template #listOptionsModalTemplate>
+  <div class="modal-header clearfix">
+    <h4 class="modal-title float-left">Category Options</h4>
+    <button type="button" class="close float-right" aria-label="Close" (click)="categoryOptionsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="inputCategoryTitle">Title</label>
+      <input type="text" class="form-control" id="inputCategoryTitle" placeholder="Category name..."
+        [(ngModel)]="categoryOptionsEditor.title" (keyup.enter)="updateCategoryOptions()" />
+    </div>
+    <div *ngIf="debug">
+      <pre>{{ categoryOptionsEditor | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="float-left">
+        <button class="btn btn-default text-danger" (click)="confirmDeleteCategory(deleteCategoryModalTemplate)">Delete</button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-default" (click)="categoryOptionsModalRef.hide()">Cancel</button>
+        <button class="btn btn-primary" (click)="updateCategoryOptions()">Update</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #itemDetailsModalTemplate>
+  <div class="modal-header clearfix">
+    <h4 class="modal-title float-left">Item Details</h4>
+    <button type="button" class="close float-right" aria-label="Close" (click)="itemDetailsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form">
+      <div class="form-group">
+        <label for="list">Category</label>
+        <select class="form-control" [(ngModel)]="itemDetailsEditor.listId">
+          <option [ngValue]="list.id" *ngFor="let list of vm.categories">{{ list.title }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="note">Note</label>
+        <textarea id="note" class="form-control" rows="3" [(ngModel)]="itemDetailsEditor.note"></textarea>
+      </div>
+    </div>
+    <div *ngIf="debug">
+      <pre>{{ itemDetailsEditor | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="clearfix">
+      <div class="float-left">
+        <button class="btn btn-default text-danger" (click)="deleteItem(selectedItem)">Delete</button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-default" (click)="itemDetailsModalRef.hide()">Cancel</button>
+        <button class="btn btn-primary" (click)="updateItemDetails()">Update</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deleteCategoryModalTemplate>
+  <div class="modal-header clearfix">
+    <h4 class="modal-title float-left">Delete "{{ selectedCategory?.title }}"?</h4>
+    <button type="button" class="close float-right" aria-label="Close" (click)="deleteCategoryModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>All items will be permanently deleted. </p>
+    <div *ngIf="debug">
+      <pre>{{ selectedCategory | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="button" class="btn btn-default" (click)="deleteCategoryModalRef.hide()">Cancel</button>
+      <button type="button" class="btn btn-danger" (click)="deleteCategoryConfirmed()">Delete</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #newCategoryModalTemplate>
+  <div class="modal-header clearfix">
+    <h4 class="modal-title float-left">New Category</h4>
+    <button type="button" class="close float-right" aria-label="Close" (click)="newCategoryCancelled()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Category title..." [(ngModel)]="newCategoryEditor.title"
+        [ngClass]="{ 'is-invalid': newCategoryEditor.error }" (keyup.enter)="addCategory()" />
+      <div *ngIf="newCategoryEditor.error" class="invalid-feedback">
+        {{ newCategoryEditor.error }}
+      </div>
+    </div>
+    <div *ngIf="debug">
+      <pre>{{ newCategoryEditor | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-right">
+      <button class="btn btn-default" (click)="newCategoryCancelled()">Cancel</button>
+      <button class="btn btn-primary" (click)="addCategory()">Create</button>
+    </div>
+  </div>
+</ng-template>
